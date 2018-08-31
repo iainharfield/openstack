@@ -79,3 +79,10 @@ openstack image create --private  --disk-format vmdk  --container-format bare  -
 openstack image create --private  --disk-format qcow2 --container-format bare  --file ./myimages/ubuntu-16.04-sb10.3-4.img  --property key=myKey  Ubuntu-16.04-sb10.3-4
 # glance image-create --name imported_image --file ./myimages/ubuntu-16.04-sb10.3-3.img --disk-format qcow2 --container-format bare --name ubuntu-16.04-sb10.3-3
 openstack image list
+
+
+echo "#################################################"
+echo "#" Get the list of Projects 
+echo "#" Use the Demo ID in your OpenBaton vim config    
+echo "#################################################"
+openstack project list
