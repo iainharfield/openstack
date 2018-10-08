@@ -30,7 +30,7 @@ echo "#############################################"
 #  Create the mykey directory and put your key file in it
 #  key your laptop key. From your laptop execute something like
 #     scp -i awsIreland.pem ./.ssh/id_rsa.pub ubuntu@ec2-52-50-208-36.eu-west-1.compute.amazonaws.com:~/devstack/mykey
-openstack keypair create --public-key  ./myKey/id_rsa.pub  myKey
+openstack keypair create --public-key  ./myKeys/id_rsa.pub  myKey
 
 
 echo "#########################################################"
