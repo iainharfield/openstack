@@ -13,7 +13,7 @@
 echo "##########################################################"
 echo "#" get the demo user contect for openstack CLI commands
 echo "##########################################################"
-./devstack/. openrc demo demo
+. ./devstack/openrc demo demo
 
 echo "#################################################"
 echo "#" Create security groups
