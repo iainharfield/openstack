@@ -30,13 +30,12 @@ echo "#############################################"
 #  Create the mykey directory and put your key file in it
 #  key your laptop key. From your laptop execute something like
 #     scp -i awsIreland.pem ./.ssh/id_rsa.pub ubuntu@ec2-52-50-208-36.eu-west-1.compute.amazonaws.com:~/devstack/mykey
-openstack keypair create --public-key  ./mykey/id_rsa.pub  myKey
+openstack keypair create --public-key  ../myKey/id_rsa.pub  myKey
 
 
 echo "#########################################################"
 echo "#" Create  some floating point ip address in the project
 echo "#########################################################"
-
 openstack floating ip create  public
 openstack floating ip create  public
 openstack floating ip create  public
@@ -44,27 +43,30 @@ openstack floating ip create  public
 openstack floating ip create  public
 openstack floating ip create  public
 openstack floating ip create  public
-
+openstack floating ip create  public
+openstack floating ip create  public
+openstack floating ip create  public
+openstack floating ip create  public
 openstack floating ip list
 
 
 echo "#################################################"
 echo "#" Download ubuntu  16.04 QCOW2 and VMDK images
 echo "#################################################"
-mkdir myimages
+#mkdir myimages
 file1="xenial-server-cloudimg-amd64-disk1.img"
 file2="xenial-server-cloudimg-amd64-disk1.vmdk"
 
-if [ ! -f "./myimages/$file1" ]
+if [ ! -f "../myImages/$file1" ]
 then
     echo "$0: File '${file1}' not found so down loading."
-    curl https://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-disk1.img > ./myimages/xenial-server-cloudimg-amd64-disk1.img
+    curl https://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-disk1.img > ../myImages/xenial-server-cloudimg-amd64-disk1.img
 fi
 
-if [ ! -f "./myimages/$file2" ]
+if [ ! -f "../myImages/$file2" ]
 then
     echo "$0: File '${file2}' not found so down loading."
-    curl https://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-disk1.img > ./myimages/xenial-server-cloudimg-amd64-disk1.vmdk
+    curl https://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-disk1.img > ../myImages/xenial-server-cloudimg-amd64-disk1.vmdk
 fi
 
 #curl https://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-disk1.img > ./myimages/xenial-server-cloudimg-amd64-disk1.img
@@ -73,11 +75,9 @@ fi
 echo "#################################################"
 echo "#" Install images into DevStack images
 echo "#################################################"
-openstack image create --private  --disk-format qcow2 --container-format bare  --file ./myimages/xenial-server-cloudimg-amd64-disk1.img  --property key=myKey  Ubuntu-16.04-qcow2
-openstack image create --private  --disk-format vmdk  --container-format bare  --file ./myimages/xenial-server-cloudimg-amd64-disk1.vmdk  --property key=myKey  Ubuntu-16.04-vmdk
-# openstack image create --private  --disk-format qcow2 --container-format bare  --file ./myimages/ubuntu-16.04-sb10.3-3.img  --property key=myKey  Ubuntu-16.04-sb10.3-3
-openstack image create --private  --disk-format qcow2 --container-format bare  --file ./myimages/ubuntu-16.04-sb10.3-4.img  --property key=myKey  Ubuntu-16.04-sb10.3-4
-# glance image-create --name imported_image --file ./myimages/ubuntu-16.04-sb10.3-3.img --disk-format qcow2 --container-format bare --name ubuntu-16.04-sb10.3-3
+openstack image create --private  --disk-format qcow2 --container-format bare  --file ../myImages/xenial-server-cloudimg-amd64-disk1.img  --property key=myKey  Ubuntu-16.04-qcow2
+openstack image create --private  --disk-format vmdk  --container-format bare  --file ../myImages/xenial-server-cloudimg-amd64-disk1.vmdk  --property key=myKey  Ubuntu-16.04-vmdk
+openstack image create --private  --disk-format qcow2 --container-format bare  --file ../myImages/ubuntu-16.04-sb10.3-4.img  --property key=myKey  Ubuntu-16.04-sb10.3-4
 openstack image list
 
 
