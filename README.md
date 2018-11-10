@@ -3,7 +3,8 @@ Basic script to get Devstack configured for simple demo
 
 Minimum Pre-Requisits
 ----------------------
-Clone the Devstack project and run the stack.sh script
+1) Follow the instauctions here: https://docs.openstack.org/devstack/latest/
+2) Run the stack.sh script
 
 Run this project
 ----------------
