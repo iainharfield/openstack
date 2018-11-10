@@ -3,7 +3,7 @@ Basic script to get Devstack configured for simple demo
 
 Minimum Pre-Requisits
 ----------------------
-1) Follow the instauctions here: https://docs.openstack.org/devstack/latest/
+1) Relies on the install-devstack ansible to have completed as script relies on some files being deployed into specific folders.
 2) Run the stack.sh script
 
 Run this project
